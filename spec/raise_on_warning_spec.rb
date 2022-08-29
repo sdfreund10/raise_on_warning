@@ -17,6 +17,6 @@ RSpec.describe RaiseOnWarning do
       end.to raise_error(RuntimeError)
     end
 
-    expect { ::Fixnum }.to raise_error(RuntimeError)
+    expect { [1, 2, 3].freeze << 4 }.to raise_error(RuntimeError)
   end
 end
