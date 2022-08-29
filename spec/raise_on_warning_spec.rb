@@ -19,4 +19,17 @@ RSpec.describe RaiseOnWarning do
 
     expect { [1, 2, 3].freeze << 4 }.to raise_error(RuntimeError)
   end
+
+  it "does not produce a warning itself when run with '-W2' warning level verbosity" do
+    program = <<~RUBY
+      require "raise_on_warning"
+      print "to stdout"
+    RUBY
+
+    stdout, stderr, status = Open3.capture3("bundle exec ruby -W2 -e '#{program}'")
+
+    expect(stdout).to eq("to stdout")
+    expect(stderr).to eq("")
+    expect(status.exitstatus).to eq(0)
+  end
 end

@@ -1,7 +1,7 @@
-module Warning
-  extend self
-
-  def warn(msg)
-    raise msg
+module RaiseWarningFilter
+  def warn(message, **_kwargs)
+    raise message
   end
 end
+
+Warning.extend(RaiseWarningFilter)

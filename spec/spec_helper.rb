@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "raise_on_warning"
 require "support/sample_class"
+require "open3"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
